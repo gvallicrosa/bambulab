@@ -89,8 +89,8 @@ impl Client {
 
     #[cfg(feature = "verify-tls")]
     fn get_ssl_opts() -> Result<paho_mqtt::SslOptions, Box<dyn std::error::Error>> {
-        let ca_cert_bytes = include_bytes!("certs/bbl_ca.pem");
-        let ca_cert_path = temp_dir().join("bbl_ca.pem");
+        let ca_cert_bytes = include_bytes!("certs/bbl_a1.pem");
+        let ca_cert_path = temp_dir().join("bbl_a1.pem");
         let mut ca_cert_file = File::create(&ca_cert_path)?;
         ca_cert_file.write_all(ca_cert_bytes)?;
         Ok(paho_mqtt::SslOptionsBuilder::new()
