@@ -81,6 +81,9 @@ impl Client {
                 self.tx.send(Message::Reconnecting)?;
             }
 
+            // reconnecting uses a clean session, so subscriptions are lost and must be redone
+            self.subscibe_to_device_report();
+
             self.tx.send(Message::Connected)?;
         }
 
